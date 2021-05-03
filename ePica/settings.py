@@ -18,12 +18,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts',
+    'phone_field',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -62,8 +64,12 @@ WSGI_APPLICATION = 'ePica.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pica',
+        'USER': 'skarnata',
+        'PASSWORD': 'Ryan99sk',
+        'HOST': 'localhost',
+        'PORT': '5434',
     }
 }
 
@@ -90,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 
@@ -110,3 +116,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # User Setting
 LOGIN_REDIRECT_URL = "home"
+
+# Email Setting
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'setiawankarnatachan@gmail.com'
+EMAIL_HOST_PASSWORD = 'Ryan99sk'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

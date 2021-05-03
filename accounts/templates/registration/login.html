@@ -3,29 +3,66 @@
 {% block content %}
     {% if form.errors %}
         <div class="alert alert-danger" role="alert">
-            Username/Password anda salah. Silakan diisi kemabli dengan data yang benar.
+            Username/Password anda salah. Silakan diisi kembali dengan data yang benar.
         </div>
     {% endif %}
-    <div class="login-form">
-        <form method="post">
-            {% csrf_token %}
-            <h2 class="text-center">Log in</h2>
-            <div class="form-group">
-                <input type="text" class="form-control" name="username" required="required">
+    <br>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <span class="anchor" id="formLogin"></span>
+            <!-- form card login with validation feedback -->
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" role="form" autocomplete="off" id="loginForm" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="uname1">Username</label>
+                            <input type="text" class="form-control" name="username" id="uname1" required="">
+                            <div class="invalid-feedback">Please enter your username or email</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" id="pwd1" required=""
+                                   autocomplete="new-password">
+                            <div class="invalid-feedback">Please enter a password</div>
+                        </div>
+                        <div class="form-check small">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                <span>Remember me on this computer</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+                    </form>
+                </div>
+                <!--/card-body-->
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Log in</button>
-            </div>
-            <div class="clearfix">
-                <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-                <a href="#" class="float-right">Forgot Password?</a>
-            </div>
-        </form>
-        <p class="text-center"><a href="#">Create an Account</a></p>
+            <!-- /form card login -->
+        </div>
     </div>
+    {#    <div class="login-form">#}
+    {#        <form method="post">#}
+    {#            {% csrf_token %}#}
+    {#            <h2 class="text-center">Log in</h2>#}
+    {#            <div class="form-group">#}
+    {#                <input type="text" class="form-control" name="username" required="required">#}
+    {#            </div>#}
+    {#            <div class="form-group">#}
+    {#                <input type="password" class="form-control" name="password" placeholder="Password" required="required">#}
+    {#            </div>#}
+    {#            <div class="form-group">#}
+    {#                <button type="submit" class="btn btn-primary btn-block">Log in</button>#}
+    {#            </div>#}
+    {#            <div class="clearfix">#}
+    {#                <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>#}
+    {#                <a href="#" class="float-right">Forgot Password?</a>#}
+    {#            </div>#}
+    {#        </form>#}
+    {#        <p class="text-center"><a href="{% url 'signup' %}">Create an Account</a></p>#}
+    {#    </div>#}
     {#    <div>#}
     {#        <form method="post">#}
     {#            {{ form.as_p }}#}

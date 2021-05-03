@@ -1,62 +1,72 @@
 {% extends 'base.html' %}
 {% block title %}Signup{% endblock %}
 {% block content %}
-    <div class="signup-form">
-        <form method="post">
-            <h2>Sign Up</h2>
-            <p>Please fill in this form to create an account!</p>
-            <hr>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-					<span class="input-group-text">
-						<span class="fa fa-user"></span>
-					</span>
+    {% if form.errors %}
+        <div class="alert alert-danger text-center" role="alert">
+            Password anda salah. Silakan diisi kembali dengan data yang benar.
+        </div>
+    {% endif %}
+    <div class="col-md-6 offset-md-3">
+        <span class="anchor" id="formRegister"></span>
+        <hr class="mb-5">
+        <!-- form card register -->
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h3 class="mb-0">Sign Up</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="form" autocomplete="off" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="inputName">Username</label>
+                        {{ form.username }}
                     </div>
-                    <input type="text" class="form-control" name="username" placeholder="Username" required="required">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-					<span class="input-group-text">
-						<i class="fa fa-paper-plane"></i>
-					</span>
+                    <div class="form-group">
+                        <label for="inputEmail3">First Name</label>
+                        {{ form.first_name }}
                     </div>
-                    <input type="email" class="form-control" name="email" placeholder="Email Address"
-                           required="required">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-					<span class="input-group-text">
-						<i class="fa fa-lock"></i>
-					</span>
+                    <div class="form-group">
+                        <label for="inputEmail3">Last Name</label>
+                        {{ form.last_name }}
                     </div>
-                    <input type="text" class="form-control" name="password" placeholder="Password" required="required">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-					<span class="input-group-text">
-						<i class="fa fa-lock"></i>
-						<i class="fa fa-check"></i>
-					</span>
+                    <div class="form-group">
+                        <label for="inputEmail3">Email</label>
+                        {{ form.email }}
                     </div>
-                    <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password"
-                           required="required">
-                </div>
+                    <div class="form-group">
+                        <label for="inputPassword3">Password</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        <label for="inputVerify3">Verify</label>
+                        {{ form.password2 }}
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-lg float-right">Register</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms
-                    of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
-            </div>
-        </form>
-        <div class="text-center">Already have an account? <a href="#">Login here</a></div>
+        </div>
+        <!-- /form card register -->
     </div>
+    <script>
+        let field_username = document.getElementById('id_username')
+        let field_email = document.getElementById('id_email')
+        let field_first_name = document.getElementById('id_first_name')
+        let field_last_name = document.getElementById('id_last_name')
+        let field_password1 = document.getElementById('id_password1')
+        let field_password2 = document.getElementById('id_password2')
+        field_username.placeholder = "Username...";
+        field_username.className += ' form-control inputName '
+        field_email.placeholder = "Email...";
+        field_email.className += ' form-control inputEmail3'
+        field_first_name.placeholder = "First Name...";
+        field_first_name.className += ' form-control'
+        field_last_name.placeholder = "Last Name...";
+        field_last_name.className += ' form-control'
+        field_password1.placeholder = "Enter password...";
+        field_password1.className += ' form-control inputPassword3'
+        field_password2.placeholder = "Re-enter password...";
+        field_password2.className += ' form-control inputVerify3'
+    </script>
 {% endblock %}

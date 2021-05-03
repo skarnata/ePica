@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Logout{% endblock %}
 {% block content %}
-    <h5>Terima kasih telah menggunakan aplikasi ePica.</h5>
+    <div class="alert alert-info text-center" role="alert">
+        Anda berhasil logout dari system ePica.
+        <br>
+        Terima kasih telah menggunakan system ePica.
+    </div>
+    <p class="text-center">Silakan anda <a href="{% url 'login' %}">login</a> kembali untuk menggunakan sistem ePica</p>
 {% endblock %}
